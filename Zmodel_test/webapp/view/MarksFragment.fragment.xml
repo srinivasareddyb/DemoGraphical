@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog title="{Dia>/Title}" afterOpen="onAfterOpenDialog">
+		<content class="sapUiTinyMargin">
+			<VBox>
+				<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+					labelSpanS="6" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+					singleContainerFullSize="false">
+					<f:content>
+						<Label text="1st Year Percentage"/>
+						<Text id="idfirst" text="{Dia>/First}"/>
+						<Label text="2nd Year Percentage"/>
+						<Text id="idnSec" text="{Dia>/Second}"/>
+						<Label text="3rd Year Percentage"/>
+						<Text id="idThr" text="{Dia>/Third}"/>
+						<Label text="4th Year Percentage"/>
+						<Text id="idFour" text="{Dia>/Four}"/>
+					</f:content>
+				</f:SimpleForm>
+				<FlexBox height="100px" alignItems="Start" justifyContent="End">
+					<ObjectStatus title="Average Percentage:-" text="{Dia>/Avg}" active="true" state="Success" class="sapUiSmallMarginEnd"/>
+				</FlexBox>
+			</VBox>
+		</content>
+		<buttons>
+			<Button type='Accept' text="Ok" press="onHandleClose"></Button>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

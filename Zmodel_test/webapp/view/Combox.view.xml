@@ -1,0 +1,115 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns="sap.m"
+	controllerName="model.app.Zmodel_test.controller.Combox" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page>
+		<customHeader>
+			<OverflowToolbar>
+				<Button type="Back" press="onNavBack"/>
+				<ToolbarSpacer/>
+				<Title text="{i18n>ComboBox And List Selection}"/>
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+		</customHeader>
+		<content>
+			<l:Grid defaultSpan="XL6 L6 M12 S12" class="sapUiTinyMarginTop">
+				<HBox alignContent="Center" alignItems="Center">
+					<Text text="{i18n>Employee Serach}">
+						<layoutData>
+							<FlexItemData growFactor="0.1"/>
+						</layoutData>
+					</Text>
+					<!--<Select id="idSelect" selectedKey="A">-->
+					<!--	<core:Item key="A" text="{i18n>All}"/>-->
+					<!--	<core:Item key="D" text="{i18n>ProductDes}"/>-->
+					<!--	<layoutData>-->
+					<!--		<FlexItemData growFactor="0.1"/>-->
+					<!--	</layoutData>-->
+					<!--</Select>-->
+					<SearchField id="idInputSearch" placeholder="{i18n>Search}" width="100%" search="onSearch">
+						<layoutData>
+							<FlexItemData growFactor="1"/>
+						</layoutData>
+					</SearchField>
+					<layoutData>
+						<l:GridData span="XL10 L8 M7 S12"/>
+					</layoutData>
+				</HBox>
+				<Button id="idBtnClear" type="Emphasized" icon="sap-icon://refresh" tooltip="{i18n>refresh}" press="onClear">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S12"/>
+					</layoutData>
+				</Button>
+			</l:Grid>
+			<l:Grid defaultSpan="XL6 L6 M6 S12">
+				<VBox>
+					<Panel id="idPEDU" expandable="true" expanded="false">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>Education}"/>
+								<ToolbarSpacer/>
+							</Toolbar>
+						</headerToolbar>
+						<SearchField width="100%" id="idSEdu"/>
+						<ScrollContainer vertical="true" height="10em">
+							<List id="idLEdu" mode="MultiSelect" items="{path:'/results'}">
+								<StandardListItem title="{Edu}"></StandardListItem>
+							</List>
+						</ScrollContainer>
+					</Panel>
+					<Panel id="idPCol" expandable="true" expanded="false">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{i18n>College}"/>
+								<ToolbarSpacer/>
+							</Toolbar>
+						</headerToolbar>
+						<SearchField width="100%" id="idSCollege"/>
+						<ScrollContainer vertical="true" height="10em">
+							<List id="idLCol" mode="MultiSelect" items="{path:'/results'}">
+								<StandardListItem title="{College}"></StandardListItem>
+							</List>
+						</ScrollContainer>
+					</Panel>
+					<layoutData>
+						<l:GridData span="XL3 L3 M3 S12"/>
+					</layoutData>
+				</VBox>
+				<ScrollContainer vertical="true" horizontal="false" height="100%">
+					<Table id="idEdu" items="{path:'/results' , sorter: { path: 'Eid' }}" growing="true" mode="MultiSelect">
+						<headerToolbar>
+							<Toolbar>
+								<Title id="tabTitle" text="{i18n>EmployeeList}"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Eid#"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+								<Text text="Edu"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+								<Text text="Institution"></Text>
+							</Column>
+							<Column demandPopin="true" minScreenWidth="Tablet" popinDisplay="Inline">
+								<Text text="Yop"></Text>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{Eid}"/>
+									<Text text="{Edu}"/>
+									<Text text="{Institution}"/>
+									<Text text="{Yop}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<layoutData>
+						<l:GridData span="XL9 L9 M9 S12"/>
+					</layoutData>
+				</ScrollContainer>
+			</l:Grid>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,36 @@
+<mvc:View 
+  controllerName = "com.enerpipe.shopfloor.enerpipe.controller.Home"
+  xmlns = "sap.m"
+  xmlns:mvc = "sap.ui.core.mvc"
+  xmlns:f="sap.f"
+  displayBlock="true">
+ <Page title="Enerpipe Applications">
+ <content>
+
+ 	<f:GridContainer id="demoGrid" class="sapUiSmallMargin">
+ 	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Enerpipe Draft Application"
+		subheader="Draft" press="onDraftPress">
+        	<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+		<TileContent>
+			<ImageContent src="sap-icon://write-new-document" />
+		</TileContent>
+	</GenericTile>
+
+	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Enerpipe Drawing Application"
+		subheader="Drawing" press="onDrawingPress">
+        	<layoutData>
+					<f:GridContainerItemLayoutData minRows="2" columns="2" />
+				</layoutData>
+		<TileContent>
+			<ImageContent src="sap-icon://draw-rectangle" />
+		</TileContent>
+	</GenericTile>
+
+
+    </f:GridContainer>
+ <!-- </l:Grid>  -->
+ </content>  
+ </Page> 
+</mvc:View>

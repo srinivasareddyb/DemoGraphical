@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog type="Message" title="{i18n>resDiaTitle}">
+		<content>
+			<Table noDataText="{i18n>noResp}"
+				items="{ path : '/Response', filters: {path: 'JobNo'}, sorter: {path: 'JobNo', descending: false}}">
+				<columns >
+					<Column hAlign="Begin">
+						<Text text="{i18n>jobNo}"/>
+					</Column>
+					<Column hAlign="Begin">
+						<Text text="{i18n>msg}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{JobNo}"/>
+							<Text text="{SpoolDraft}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<beginButton>
+			<Button type='Emphasized' text="{i18n>ok}" press="onResponseFragClose"></Button>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Dialog title="{i18n>machDown}" beforeOpen="beforeMDOpen" beforeClose="beforeMDClose" afterClose="afterMDClose" contentWidth="320px">
+		<Text class="sapUiSmallMargin" text="{i18n>machDownMsg}"/>
+		<SearchField id="wcSearch" liveChange="onWCSearch" search="onWCSearch" width="100%"/>
+		<List mode="MultiSelect" items="{/results}">
+			<items>
+				<StandardListItem title="{Workcenter}" highlight="{= ${Status} === 'R' ? 'Error' : 'None'}"/>
+			</items>
+		</List>
+		<buttons>
+			<Button type="Reject" text="{i18n>set}" press="setMDStatus"/>
+			<Button type="Accept" text="{i18n>unset}" press="setMDStatus"/>
+			<Button type="Ghost" text="{i18n>cancel}" press="onCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

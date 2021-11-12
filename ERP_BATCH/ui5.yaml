@@ -1,0 +1,28 @@
+specVersion: "2.4"
+metadata:
+  name: erp.com.erp_batch
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: ""
+            destination: D02_M
+          - path: /D02_M/sap/opu/odata/sap/ZEF_CRUD_EMP_SRV/
+            url: ""
+            destination: D02_M
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: ""
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp

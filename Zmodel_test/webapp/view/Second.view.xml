@@ -1,0 +1,61 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="model.app.Zmodel_test.controller.Second"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page>
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button type="Back" press="onNavBack"/>
+				</contentLeft>
+				<contentMiddle>
+					<Text text="{i18n>SecondPage}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button icon="sap-icon://employee-lookup" tooltip="{i18n>EmployeeLookup}" press="onEmployee" type="Accept"/>
+					<Button type="Accept" text="{i18n>MasterDetail}" press="onMaster" icon="sap-icon://education"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<ObjectHeader id="hdrTitle" title="Name:{homeModel>/Name}" number="{homeModel>/Eid}" numberUnit="{homeModel>/Phone}">
+				<attributes>
+					<ObjectAttribute title="City" text="{homeModel>/City}"/>
+					<ObjectAttribute title="Email" text="{homeModel>/Email}"/>
+				</attributes>
+				<statuses>
+					<ObjectStatus title="Status" text="{secondModel>/results/0/Status}" state="Success"/>
+				</statuses>
+			</ObjectHeader>
+			<Table id="idTable2" mode="SingleSelectMaster" selectionChange="onEmpSelect" items="{ path: '/results', sorter: { path: 'Eid' } }">
+				<headerToolbar>
+					<Toolbar>
+						<content>
+							<Title text="{i18n>Education}" level="H2"/>
+							<ToolbarSpacer/>
+							<SearchField liveChange="onSearchEdu" width="30%" id="headSearch" placeholder="{i18n>EduSearch}"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Edu"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Institution"/>
+					</Column>
+					<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+						<Text text="Year Of Passout"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{Edu}"/>
+							<Text text="{Institution}"/>
+							<Text text="{Yop}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

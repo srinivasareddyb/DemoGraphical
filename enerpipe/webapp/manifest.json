@@ -1,0 +1,125 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.enerpipe.shopfloor.enerpipe",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "com.enerpipe.shopfloor.enerpipe.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.66.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.enerpipe.shopfloor.enerpipe.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.enerpipe.shopfloor.enerpipe.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "home",
+                    "pattern": "",
+                    "target": [
+                        "HomeApp"
+                    ]
+                },
+                {
+                    "name": "draft",
+                    "pattern": "draft/:Id:",
+                    "target": [
+                        "DraftApp"
+                    ]
+                },
+                {
+                    "name": "drawing",
+                    "pattern": "drawing/:Id:",
+                    "target": [
+                        "DrawingApp"
+                    ]
+                }
+            ],
+            "targets": {
+                "HomeApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "home",
+                    "viewName": "Home",
+                    "viewLevel": 1
+                },
+                "DraftApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "draft",
+                    "viewName": "Draft",
+                    "viewLevel": 2
+                },
+                "DrawingApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "drawing",
+                    "viewName": "Drawing",
+                    "viewLevel": 3
+                }
+            }
+        }
+    }
+}

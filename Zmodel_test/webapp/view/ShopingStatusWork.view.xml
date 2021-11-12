@@ -1,0 +1,40 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="model.app.Zmodel_test.controller.ShopingStatusWork" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page enableScrolling="false">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button type="Back" press="onNavBack" tooltip="{i18n>Back}"/>
+				</contentLeft>
+				<contentMiddle>
+					<Text text="{i18n>ShopingApp}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button type="Accept" press="onHome" icon="sap-icon://home" tooltip="{i18n>Home}"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<VBox alignContent="Center" justifyContent="Center" width="100%" class="headerVBox">
+				<HBox alignContent="Center" justifyContent="Center" width="100%" height="60%">
+					<SegmentedButton id="viewTabs" selectedKey="Kiosk" class="sapUiSmallMargin" selectionChange="onChangeView">
+						<items>
+							<SegmentedButtonItem id="Kiosk" key="Kiosk" text="{i18n>kiosk}" width="auto"/>
+							<SegmentedButtonItem id="All" key="{allR}" text="{i18n>allR}" width="auto"/>
+						</items>
+					</SegmentedButton>
+				</HBox>
+				<HBox width="100%" visible="{= !${homeModel>/showKiosks}}" class="searchBox">
+					<SearchField id="AllSearch" placeholder="{i18n>kiosk}, {i18n>grpId}, {i18n>wc}, {i18n>po} {i18n>or} {i18n>stat}" liveChange="onSearch"
+						search="onSearch" width="100%"/>
+					<Button width="auto" icon="sap-icon://technical-object" tooltip="{i18n>machDownTT}" press="onMachineDown"/>
+				</HBox>
+			</VBox>
+			<ScrollContainer horizontal="false" vertical="true" visible="{homeModel>/showKiosks}" class="kioskTiles" height="90%">
+				<IconTabBar id="idIconTabBar" select="handleIconTabBarSelect" expanded="true"/>
+				<ScrollContainer id="tileSet" horizontal="false" vertical="true" class="kioskTiles"></ScrollContainer>
+			</ScrollContainer>
+			<ScrollContainer id="allTileSet" horizontal="false" vertical="true" visible="{= !${homeModel>/showKiosks}}" class="allTiles" height="85.56%"/>
+		</content>
+	</Page>
+</mvc:View>

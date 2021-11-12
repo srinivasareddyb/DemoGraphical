@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover contentHeight="100px" contentWidth="250px" horizontalScrolling="true" placement="Auto" showHeader="true" title="Manual Entry" >
+        <content>
+            <Input id="inpPersno" placeholder="Employee ID" type="Number" width="250px"/>
+            <Input id="inpSsn" placeholder="Last 4 digits of SSN" type="Password" width="249.9499969482422px" maxLength="4"/>
+            <Button text="Submit" type="Emphasized" icon="sap-icon://time-entry-request" iconFirst="true" width="250px" iconDensityAware="false" press="onManualSubmit"/>
+        </content>
+    </Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,157 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="model.app.Zmodel_test.controller.MasterDetail" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange="onOrientationChange">
+		<masterPages>
+			<Page id="master">
+				<customHeader>
+					<Bar>
+						<contentLeft>
+							<Button type="Back" press="onNavBack"/>
+						</contentLeft>
+						<contentMiddle>
+							<Text id="title" text="{i18n>EmpDetails}"/>
+						</contentMiddle>
+						<contentRight>
+							<!--<Switch id="switch" state="true" customTextOn="PO" customTextOff="Ord" change="onSwitch"></Switch>-->
+						</contentRight>
+					</Bar>
+				</customHeader>
+				<content>
+					<List id="idEmpList" items="{ path: '/results', sorter: { path: 'Eid' } }" growingScrollToLoad="true" mode="SingleSelectMaster"
+						selectionChange="onhandlePress" rememberSelections="false">
+						<items>
+							<StandardListItem title="{Eid}-{Name}" description="{Phone}" info="{Email}" infoState="{State}" type="Active"/>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</masterPages>
+		<detailPages>
+			<Page id="detail" title="{i18n>EmployeeEducation}">
+				<headerContent></headerContent>
+				<ScrollContainer id="postView" horizontal="false" vertical="true" height="100%">
+					<ObjectHeader id="hdrTitle" title="Name:{homeModel>/Name}" number="{homeModel>/Eid}" numberUnit="{homeModel>/Phone}">
+						<attributes>
+							<ObjectAttribute title="City" text="{homeModel>/City}"/>
+							<ObjectAttribute title="Email" text="{homeModel>/Email}"/>
+						</attributes>
+						<statuses>
+							<ObjectStatus title="Status" text="{secondModel>/results/0/Status}" state="Success"/>
+						</statuses>
+					</ObjectHeader>
+					<content>
+						<Table id="idEdu" items="{ path: '/results', sorter: { path: 'Eid' } }">
+							<headerToolbar></headerToolbar>
+							<columns>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Edu"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+									<Text text="Institution"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+									<Text text="Year Of Passout"/>
+								</Column>
+								<Column minScreenWidth="Tablet" hAlign="Center"></Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{Edu}" titleActive="{=${Edu} === 'SSC' ? true : false}" titlePress="onSSCPress"/>
+										<Text text="{Institution}"/>
+										<Text text="{Yop}"/>
+										<Button icon="sap-icon://learning-assistant" press="onMarks" visible="{= ${Edu} === 'B.Tech' ? true : false}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<f:SimpleForm id="idForm" class="sapUiForceWidthAuto sapUiResponsiveMargin" title="SSC Marks" visible="false">
+							<!--visible="false"-->
+							<!--<f:title>-->
+							<!--	<core:Title text="SSC Marks"/>-->
+							<!--</f:title>-->
+							<Label text="English"/>
+							<Text text="{Form>/English}"/>
+							<Label text="Telugu"/>
+							<Text text="{Form>/Telugu}"/>
+							<Label text="Maths"/>
+							<Text text="{Form>/Maths}"/>
+							<Label text="Social"/>
+							<Text text="{Form>/Social}"/>
+							<Label text="Science"/>
+							<Text text="{Form>/Science}"/>
+							<Label text="Hindi"/>
+							<Text text="{Form>/Hindi}"/>
+						</f:SimpleForm>
+						<IconTabBar id="idIconTabBar" expanded="true" select="onTabChange" selectedKey="Bar" class="sapUiResponsiveContentPadding" visible="false">
+							<items>
+								<IconTabFilter id="idBar" iconColor="Critical" text="Bar Chart" key="Bar">
+									<viz:Popover id="idPopOverBar"></viz:Popover>
+									<viz:VizFrame id="idVizFrameBar" uiConfig="{applicationSet:'fiori'}" vizType='column'>
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{/results}">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="Subject" value="{Subject}"/>
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Marks" value="{Marks}"/>
+													<viz.data:MeasureDefinition name="Mark" value="{Marks}"/>
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+										<viz:feeds>
+											<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="Marks"/>
+											<viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Subject"/>
+										</viz:feeds>
+									</viz:VizFrame>
+								</IconTabFilter>
+								<IconTabFilter id="idPie" iconColor="Critical" text="Pie Chart" key="Pie">
+									<viz:Popover id="idPopOverPie"></viz:Popover>
+									<viz:VizFrame id="idVizFramePie" uiConfig="{applicationSet:'fiori'}" vizType='pie'>
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{path : '/results' , sorter: { path: 'Marks' } }">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="Subject" value="{Subject}"/>
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="Marks" value="{Marks}"/>
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+										<viz:feeds>
+											<viz.feeds:FeedItem uid="size" type="Measure" values="Marks"/>
+											<viz.feeds:FeedItem uid="color" type="Dimension" values="Subject"/>
+										</viz:feeds>
+									</viz:VizFrame>
+								</IconTabFilter>
+								<IconTabFilter id="idStockBar" iconColor="Critical" text="Stock Bar" key="Stock">
+									<viz:Popover id="idPopOverStock"></viz:Popover>
+									<viz:VizFrame id="idVizFrameStock" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='stacked_bar'>
+										<viz:dataset>
+											<viz.data:FlattenedDataset data="{path :'/results'}">
+												<viz.data:dimensions>
+													<viz.data:DimensionDefinition name="Delay" value="{DelayName}"/>
+													<viz.data:DimensionDefinition name="Group" value="{Group}"/>
+												</viz.data:dimensions>
+												<viz.data:measures>
+													<viz.data:MeasureDefinition name="No of Records" value="{Records}"/>
+												</viz.data:measures>
+											</viz.data:FlattenedDataset>
+										</viz:dataset>
+										<viz:feeds>
+											<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Records"/>
+											<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="DelayName"/>
+											<viz.feeds:FeedItem uid="color" type="Dimension" values="Group"/>
+										</viz:feeds>
+									</viz:VizFrame>
+								</IconTabFilter>
+							</items>
+						</IconTabBar>
+					</content>
+				</ScrollContainer>
+				<footer></footer>
+			</Page>
+		</detailPages>
+	</SplitApp>
+</mvc:View>

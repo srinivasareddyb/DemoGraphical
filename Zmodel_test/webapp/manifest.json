@@ -1,0 +1,194 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "model.app.Zmodel_test",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "model.app.Zmodel_test.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.1",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "model.app.Zmodel_test.i18n.i18n"
+				}
+			},
+			"GModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "model.app.Zmodel_test.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [{
+				"name": "home",
+				"pattern": "",
+				"target": [
+					"Home"
+				]
+			}, {
+				"name": "second",
+				"pattern": "second/{Eid}",
+				"target": [
+					"Second"
+				]
+			}, {
+				"name": "main",
+				"pattern": "main",
+				"target": [
+					"Main"
+				]
+			}, {
+				"name": "empmaster",
+				"pattern": "empmaster",
+				"target": [
+					"EmpMaster"
+				]
+			}, {
+				"name": "edudetails",
+				"pattern": "edudetails/{Eid}",
+				"target": [
+					"EduDetails"
+				]
+			}, {
+				"name": "alldetails",
+				"pattern": "alldetails",
+				"target": [
+					"MasterDetail"
+				]
+			}, {
+				"name": "shopingstatus",
+				"pattern": "shopingstatus",
+				"target": [
+					"ShopingStatusWork"
+				]
+			},
+			{
+				"name":"combox",
+				"pattern": "combox",
+				"target":[
+					"Combox"
+					]
+			}],
+			"targets": {
+				"Home": {
+					"viewType": "XML",
+					"viewName": "Home",
+					"viewLevel": 1,
+					"title": "{i18n>homeTitle}",
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"Second": {
+					"viewType": "XML",
+					"viewName": "Second",
+					"viewLevel": 2,
+					"viewId": "secondid",
+					"title": "{i18n>secondTitle}",
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"Main": {
+					"viewType": "XML",
+					"viewName": "Main",
+					"viewLevel": 3,
+					"title": "{i18n>mainTitle}",
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"EmpMaster": {
+					"viewType": "XML",
+					"viewName": "EmpMaster",
+					"viewLevel": 3,
+					"title": "{i18n>empMasterTitle}",
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"EduDetails": {
+					"viewType": "XML",
+					"viewName": "EduDetails",
+					"viewLevel": 3,
+					"title": "{i18n>eduDetailTitle}",
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"MasterDetail": {
+					"viewType": "XML",
+					"viewName": "MasterDetail",
+					"viewLevel": 3,
+					"title": "{i18n>allDetailTitle}",
+					"controlId": "app",
+					"controlAggregation": "pages"
+				},
+				"ShopingStatusWork": {
+					"viewType": "XML",
+					"viewName": "ShopingStatusWork",
+					"viewLevel": 4,
+					"title": "{i18n>ShoppingStatus}"
+				},
+				"Combox": {
+					"viewType": "XML",
+					"viewName": "Combox",
+					"viewLevel": 2,
+					"controlId": "app",
+					"controlAggregation": "pages"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="emp.timelog.TimeLog.controller.Logon"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>title}">
+		<headerContent>
+			<Button text="Manual Entry" type="Emphasized" icon="sap-icon://time-entry-request" iconFirst="true" width="auto" enabled="true"
+				visible="true" iconDensityAware="false" press="onManualEntry"/>
+		</headerContent>
+		<content>
+			<!--.inpScanCode { opacity: 0; }-->
+			<html:style>
+				 .lblDate { font-size: 140%; } .lblDay { font-size: 120%; } .lblTime { font-size: 500%; }
+			</html:style>
+			<VBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTop">
+				<items>
+					<Label class="lblDate" id="lblCompCode" text="World Gate"/>
+					<Label class="lblDay" id="lblGateName" text="Main Gate 1"/>
+					<Input id="inpScanCode" class="inpScanCode" liveChange="onReceiveScanCode"></Input>
+					<Label class="lblDate" id="lblDate"/>
+					<Label class="lblDay" id="lblDay"/>
+					<Label class="lblTime" id="lblTime"/>
+				</items>
+			</VBox>
+			<html:audio id="notificationAudio"></html:audio>
+		</content>
+	</Page>
+</mvc:View>

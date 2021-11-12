@@ -1,0 +1,49 @@
+<mvc:View controllerName="com.enerpipe.shopfloor.enerpipe.controller.Drawing"
+xmlns = "sap.m"
+xmlns:mvc = "sap.ui.core.mvc" 
+xmlns:l="sap.ui.layout" 
+xmlns:core="sap.ui.core"
+xmlns:f="sap.ui.layout.form">
+<Page title="Drawing Appplication">
+	<customHeader>
+			<Bar>
+<contentLeft>
+         <Button type="Default" icon="sap-icon://nav-back" press="onNavDrawToHome"></Button>
+        </contentLeft>
+				<contentMiddle>
+					<Text text="Drawing Appplication"></Text>
+				</contentMiddle>
+				<contentRight>
+					<Button id="idBut1" type="Emphasized" icon="sap-icon://request" tooltip="Report" press="onReport"></Button>
+					<Button id="idBut" type="Emphasized" icon="sap-icon://add" press="onAdd"></Button>
+				</contentRight>
+			</Bar>
+		</customHeader>
+        <content>
+        <Table id ="idJobTitle" noDataText="{i18n>noAdds}" mode="Delete" delete="onDelete">
+         <columns>
+              	<Column hAlign="Center">
+						<Text text="{i18n>jobNo}"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="{i18n>jobDesc}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+						<Text text="{i18n>noOfDraw}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+						<Text text="{i18n>noOfSpools}"/>
+					</Column>        
+         </columns>
+         			<items></items>
+         </Table>
+        </content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="{i18n>save}" press="onSave"/>
+			</OverflowToolbar>
+		</footer>
+
+ </Page>
+</mvc:View>

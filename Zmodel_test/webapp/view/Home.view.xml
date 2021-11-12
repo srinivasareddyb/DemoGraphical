@@ -1,0 +1,59 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="model.app.Zmodel_test.controller.Home"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Title">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<!--<Button type="Back" press="onNavBack"/>-->
+				</contentLeft>
+				<contentMiddle>
+					<Text text="{i18n>MainPage}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button type="Accept" text="{i18n>Shoping Status App}" press="onShopingApp" icon="sap-icon://shipping-status"/>
+					<Button icon="sap-icon://checklist" tooltip="{i18n>ComboBox}" press="onComboBox" type="Emphasized"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<!--items="{ path: '/results', sorter: { path: 'Eid' } }"-->
+		<Table id="idTable" mode="SingleSelectMaster" selectionChange="onEmpSelect" items="{ path: '/results', sorter: { path: 'Eid' } }">
+			<headerToolbar>
+				<Toolbar>
+					<content>
+						<Title text="{i18n>Employee}" level="H2"/>
+						<ToolbarSpacer/>
+						<SearchField liveChange="onSearch" width="30%" id="headSearch" placeholder="{i18n>EmployeeSearch}"/>
+					</content>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column width="12em">
+					<Text text="Eid"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Text text="Name"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+					<Text text="Phone"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+					<Text text="City"/>
+				</Column>
+				<Column hAlign="Begin">
+					<Text text="Email"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{Eid}"/>
+						<Text text="{Name}"/>
+						<Text text="{Phone}"/>
+						<Text text="{City}"/>
+						<Text text="{Email}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</mvc:View>

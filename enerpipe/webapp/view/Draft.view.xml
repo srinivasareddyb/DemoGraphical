@@ -1,0 +1,69 @@
+<mvc:View 
+  controllerName = "com.enerpipe.shopfloor.enerpipe.controller.Draft"
+  xmlns = "sap.m"
+  xmlns:mvc = "sap.ui.core.mvc">
+<Page title="{i18n>DraftTitle}">
+   <customHeader>
+      <Bar>
+        <contentLeft>
+         <Button type="Accept" icon="sap-icon://nav-back" press="onNavDratToHome"></Button>
+        </contentLeft>
+         <contentMiddle> 
+          <Title text ="{i18n>DraftTitle}"/>
+         </contentMiddle>
+      </Bar>
+    </customHeader>
+<content>
+   <Table id ="jobTable" noDataText="{i18n>noAdd}"
+       items="{path:'/results',sorter:{path:'JobNo',descending: false}}" growingScrollToLoad="true">
+      <headerToolbar>
+        <Toolbar> <content>
+           <Title text= "{i18n>SpoolsDrafted}" id="jobTableTitle"></Title>
+           <ToolbarSpacer ></ToolbarSpacer>
+           	<SearchField id="searchField" width="auto" liveChange="onSearch" 
+								placeholder="{i18n>jobNo} {i18n>or} {i18n>jobDesc}"/>
+         </content>
+         </Toolbar>    
+      </headerToolbar>
+				<columns>
+					<Column hAlign="Begin">
+						<Text text="{i18n>jobNo}"/>
+					</Column>
+					<Column hAlign="Begin">
+						<Text text="{i18n>jobDesc}"/>
+					</Column>
+					<Column hAlign="Center">
+						<Text text="{i18n>noOfDraw}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+						<Text text="{i18n>noOfSpools}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="Center">
+						<Text text="{i18n>spoolsDrafted}"/>
+					</Column>
+					<Column visible="false">
+						<Text text="{i18n>preSpoolsDrafted}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{JobNo}"></Text>
+							<Text text="{Post1}"></Text>
+							<Text text="{OverallDrawing}"></Text>
+							<Text text="{NoOfSpool}"></Text>
+							<Input placeholder="{SpoolDraft}" value="{SpoolDraftNew}" type="Number" liveChange="onInputLiveChange"></Input>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="{i18n>save}" press="onSave"/>
+			</OverflowToolbar>
+		</footer>
+</Page>
+</mvc:View>
+

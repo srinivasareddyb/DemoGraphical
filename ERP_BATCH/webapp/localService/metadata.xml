@@ -1,0 +1,13 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZEF_CRUD_EMP_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="EMP" sap:content-version="1">
+				<Key><PropertyRef Name="Eid"/></Key><Property Name="Country" Type="Edm.String" MaxLength="3"/><Property Name="Mandt" Type="Edm.String" MaxLength="3" sap:filterable="false"/><Property Name="Eid" Type="Edm.String" Nullable="false" MaxLength="10"/><Property Name="Name" Type="Edm.String" MaxLength="35"/><Property Name="Phone" Type="Edm.String" MaxLength="10"/><Property Name="City" Type="Edm.String" MaxLength="25"/><Property Name="State" Type="Edm.String" MaxLength="3"/><Property Name="CreDate" Type="Edm.DateTime" Precision="7" sap:filterable="false"/><Property Name="DelDate" Type="Edm.DateTime" Precision="7" sap:filterable="false"/><Property Name="UpDate" Type="Edm.DateTime" Precision="7" sap:filterable="false"/><Property Name="Flag" Type="Edm.String" MaxLength="1"/></EntityType>
+			<EntityType Name="Address" sap:content-version="1">
+				<Key><PropertyRef Name="City"/><PropertyRef Name="State"/><PropertyRef Name="Country"/></Key><Property Name="City" Type="Edm.String" Nullable="false" MaxLength="25" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="State" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3" sap:creatable="false" sap:updatable="false" sap:sortable="false"/></EntityType>
+			<EntityContainer Name="ZEF_CRUD_EMP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="EMPSet" EntityType="ZEF_CRUD_EMP_SRV.EMP" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="AddressSet" EntityType="ZEF_CRUD_EMP_SRV.Address" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/sap/ZEF_CRUD_EMP_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/sap/ZEF_CRUD_EMP_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

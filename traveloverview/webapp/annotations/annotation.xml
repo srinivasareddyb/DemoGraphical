@@ -1,0 +1,61 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZUI_FE_BOOKING_000093_O2/$metadata">
+        <edmx:Include Namespace="cds_zfe_booking_analytics_000093"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="sap.fe.demo">
+            <Annotations Target="cds_zfe_booking_analytics_000093.BookingType">
+                <Annotation Term="UI.Chart" Qualifier="FlightPriceColumn">
+                    <Record>
+                        <PropertyValue Property="Title" String="Daily Flight Cost "/>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="FlightPrice"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="FlightDate"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Description" String="REPLACE_WITH_CHART_DESC"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="FlightPriceColumnDataPoint">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="FlightPrice"/>
+                        <PropertyValue Property="Title" String="Flight Price"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="ToBookingAnalysis">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="Booking"/>
+                            <PropertyValue Property="Action" String="analysis"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <!-- <Annotations Target="cds_zfe_booking_analytics_000093.TravelType">
+                <Annotation Term="UI.LineItem" Qualifier="AcceptedTravels">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Description"/>
+                            <PropertyValue Property="Label" String="Travel"/>
+                        </Record>
+                    </Collection>
+                </Annotation> 
+            <!-- </Annotations> -->
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,23 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="model.app.Zmodel_test.controller.EmpMaster"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page>
+		<customHeader>
+			<Toolbar>
+				<Title id="idEmpMaster" text="{i18n>EmpMaster}" class="sapUiSmallMarginBegin"></Title>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<VBox>
+				<VBox class="sapUiTinyMarginBeginEnd">
+					<SearchField liveChange="onSearch" width="100%" id="headSearch" placeholder="{i18n>empSearch}"/>
+				</VBox>
+			</VBox>
+			<List id="idEmpList" items="{ path: '/results', sorter: { path: 'Eid' } }" growingScrollToLoad="true" mode="SingleSelectMaster"
+				selectionChange="onhandlePress" rememberSelections="false">
+				<items>
+					<StandardListItem title="{Eid}-{Name}" description="{Phone}" info="{Email}" infoState="{State}" type="Active"/>
+				</items>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

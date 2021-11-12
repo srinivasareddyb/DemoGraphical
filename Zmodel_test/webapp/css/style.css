@@ -1,0 +1,20 @@
+/* Enter your custom styles here */
+.Green {
+	background: #88FF99;
+	
+}
+
+.Red {
+	background: #FF8888;
+	
+}
+
+.Red span, .Red .sapMTileCntFtrTxt,
+.Green span, .Green .sapMTileCntFtrTxt {
+	color: #000 !important;
+}
+
+
+.ShopingStatusWork .searchBox>div:first-child {
+	width: 100%;
+}
